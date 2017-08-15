@@ -26,10 +26,6 @@
 		<div class="columns">
 			<?php print_quiz() ?>
 		</div>
-		<h2 class="h3">Le graphique</h2>
-		<canvas id="myChart"></canvas>
 	</div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-	<script src="assets/js/script.js"></script>
 </body>
 </html>

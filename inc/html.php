@@ -1,7 +1,5 @@
 <?php 
 
-	include 'db.php';
-
 	$questions = [
 		'Je me sentirais mal à l’aise sans un accès constant à de l’information sur mon téléphone cellulaire.',
 		'Je me sentirais agacé si je ne pouvais pas consulter de l’information sur mon téléphone quand bon me semble.',
@@ -30,13 +28,10 @@
 	if(!empty($_POST)) {
 
 		foreach ($_POST as $key => $value) {
-			if (is_int($key)) {
-				$score += $value;
-			}
+			
+			$score += $value;
+			
 		}
-
-		$zipcode = (isset($_POST['zipcode']))?$_POST['zipcode']: '';
-		save_to_db(array($score, $zipcode));
 	}
 
 	function print_quiz () {
@@ -65,21 +60,6 @@
 				?>
 				</ol>
 
-				<label for="zipcode">
-					Selectionner votre code postal
-					<select name="zipcode" id="zipcode">
-					<?php 
-						$zipcodes = get_zipcodes(0, 500);
-						if (!empty($zipcodes)) {
-							foreach ($zipcodes as $zip) {
-							?>
-								<option value="<?= $zip['id']; ?>"><?= $zip['code_postal'].' &ndash; '.$zip['localité']; ?></option>
-							<?php
-							}
-						}
-					?>
-					</select>
-				</label>
 				<p>Alors, qu’est-ce que ça donne?</p>
 				<p>
 					<input type="submit" class="button" value="Submit">
